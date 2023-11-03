@@ -14,10 +14,10 @@ func handler(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Access-Control-Allow-Origin", "http://localhost:3000")
 	switch r.Method {
 	case http.MethodGet:
-		controller.GetHandler()
+		controller.GetHandler(w, r)
 
 	case http.MethodPost:
-		controller.PostHandler()
+		controller.PostHandler(w, r)
 
 	default:
 		log.Printf("fail: HTTP Method is %s\n", r.Method)
