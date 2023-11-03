@@ -1,8 +1,8 @@
 package main
 
 import (
-	"db/controller"
-	"db/dao"
+	"hackathon/controller"
+	"hackathon/dao"
 	"log"
 	"net/http"
 	"os"

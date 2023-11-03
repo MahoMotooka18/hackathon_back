@@ -1,12 +1,12 @@
 package controller
 
 import (
-	"db/dao"
-	"db/model"
 	"encoding/json"
 	_ "github.com/go-sql-driver/mysql"
 	_ "github.com/joho/godotenv"
 	"golang.org/x/crypto/bcrypt"
+	"hackathon/dao"
+	"hackathon/model"
 	"log"
 	"net/http"
 )
