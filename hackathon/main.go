@@ -1,8 +1,8 @@
 package main
 
 import (
-	"hackathon/controller"
 	"hackathon/dao"
+	"hackathon/user_controller"
 	"log"
 	"net/http"
 	"os"
@@ -14,10 +14,10 @@ func handler(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Access-Control-Allow-Origin", "http://localhost:3000")
 	switch r.Method {
 	case http.MethodGet:
-		controller.GetHandler(w, r)
+		user_controller.GetHandler(w, r)
 
 	case http.MethodPost:
-		controller.PostHandler(w, r)
+		user_controller.PostHandler(w, r)
 
 	default:
 		log.Printf("fail: HTTP Method is %s\n", r.Method)
@@ -28,10 +28,10 @@ func handler(w http.ResponseWriter, r *http.Request) {
 
 func main() {
 	// ② /userでリクエストされたらnameパラメーターと一致する名前を持つレコードをJSON形式で返す
-	http.HandleFunc("/users", handler)
+	http.HandleFunc("/user", handler)
 	// ③ Ctrl+CでHTTPサーバー停止時にDBをクローズする
 	closeDBWithSysCall()
-	// 8000番ポートでリクエストを待ち受ける
+	// 8050番ポートでリクエストを待ち受ける
 	log.Println("Listening...")
 	if err := http.ListenAndServe(":8050", nil); err != nil {
 		log.Fatal(err)
