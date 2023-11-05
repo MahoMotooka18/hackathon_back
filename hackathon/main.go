@@ -2,7 +2,7 @@ package main
 
 import (
 	"hackathon/dao"
-	"hackathon/user_controller"
+	"hackathon/usecase"
 	"log"
 	"net/http"
 	"os"
@@ -10,25 +10,11 @@ import (
 	"syscall"
 )
 
-func handler(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Access-Control-Allow-Origin", "http://localhost:3000")
-	switch r.Method {
-	case http.MethodGet:
-		user_controller.GetHandler(w, r)
-
-	case http.MethodPost:
-		user_controller.PostHandler(w, r)
-
-	default:
-		log.Printf("fail: HTTP Method is %s\n", r.Method)
-		w.WriteHeader(http.StatusBadRequest)
-		return
-	}
-}
-
 func main() {
-	// ② /userでリクエストされたらnameパラメーターと一致する名前を持つレコードをJSON形式で返す
-	http.HandleFunc("/user", handler)
+	//  /userでリクエストされたら
+	http.HandleFunc("/user", usecase.UserHandler)
+	//  /knowledgeでリクエストされたら
+	http.HandleFunc("/knowledge", usecase.KnowledgeHandler)
 	// ③ Ctrl+CでHTTPサーバー停止時にDBをクローズする
 	closeDBWithSysCall()
 	// 8050番ポートでリクエストを待ち受ける

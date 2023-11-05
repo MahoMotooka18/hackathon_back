@@ -11,7 +11,7 @@ import (
 	"net/http"
 )
 
-func GetHandler(w http.ResponseWriter, r *http.Request) {
+func UserGetHandler(w http.ResponseWriter, r *http.Request) {
 
 	// ユーザーの認証情報をリクエストから受け取る
 	var requestBody struct {

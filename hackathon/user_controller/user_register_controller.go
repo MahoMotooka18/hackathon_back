@@ -26,7 +26,7 @@ func hashPassword(password string) (string, error) {
 	return string(hashedPassword), nil
 }
 
-func PostHandler(w http.ResponseWriter, r *http.Request) {
+func UserPostHandler(w http.ResponseWriter, r *http.Request) {
 	var requestBody struct {
 		Name     string `json:"name"`
 		Email    string `json:"email"`
