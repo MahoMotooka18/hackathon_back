@@ -17,6 +17,7 @@ func generateULID() ulid.ULID {
 }
 
 func KnowlegdePostHandler(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Access-Control-Allow-Origin", "http://localhost:3000")
 	var requestBody struct {
 		Name       string `json:"name"`
 		Url        string `json:"url"`
