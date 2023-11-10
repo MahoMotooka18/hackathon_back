@@ -7,7 +7,7 @@ import (
 )
 
 func KnowledgeHandler(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Access-Control-Allow-Origin", "http://localhost:8050")
+	w.Header().Set("Access-Control-Allow-Origin", "http://localhost:3000")
 	switch r.Method {
 	case http.MethodGet:
 		knowledge_controller.KnowlegdeGetHandler(w, r)
