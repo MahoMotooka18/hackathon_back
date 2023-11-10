@@ -87,7 +87,7 @@ func UserPostHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	_, err = tx.Exec("INSERT INTO user(id, name, email, password) VALUES (?,?,?,?)", ulidId, requestBody.Name, requestBody.Email, Hashed)
+	_, err = tx.Exec("INSERT INTO users(id, name, email, password) VALUES (?,?,?,?)", ulidId, requestBody.Name, requestBody.Email, Hashed)
 	if err != nil {
 		tx.Rollback()
 		log.Printf("データの登録に失敗しました, %v\n", err)

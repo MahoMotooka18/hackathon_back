@@ -28,7 +28,7 @@ func UserGetHandler(w http.ResponseWriter, r *http.Request) {
 
 	// データベースからユーザーのハッシュ化されたパスワードを取得
 	var hashedPassword string
-	if err := dao.DB.QueryRow("SELECT password FROM user WHERE name=?", requestBody.Name).Scan(&hashedPassword); err != nil {
+	if err := dao.DB.QueryRow("SELECT password FROM users WHERE name=?", requestBody.Name).Scan(&hashedPassword); err != nil {
 		log.Printf("ユーザーが見つかりません: %v\n", err)
 		w.WriteHeader(http.StatusUnauthorized)
 		return
@@ -42,7 +42,7 @@ func UserGetHandler(w http.ResponseWriter, r *http.Request) {
 
 	// ユーザー情報を取得してクライアントに返す
 	user := model.UserResForHTTPGet{}
-	if err := dao.DB.QueryRow("SELECT id, name, email FROM user WHERE name=?", requestBody.Name).Scan(&user.Id, &user.Name, &user.Email); err != nil {
+	if err := dao.DB.QueryRow("SELECT id, name, email FROM users WHERE name=?", requestBody.Name).Scan(&user.Id, &user.Name, &user.Email); err != nil {
 		log.Printf("ユーザー情報の取得に失敗しました: %v\n", err)
 		w.WriteHeader(http.StatusInternalServerError)
 		return

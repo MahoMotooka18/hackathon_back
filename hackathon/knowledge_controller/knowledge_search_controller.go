@@ -9,7 +9,7 @@ import (
 )
 
 func KnowlegdeGetHandler(w http.ResponseWriter, r *http.Request) {
-	rows, err := dao.DB.Query("SELECT id, name, url, category, curriculum FROM user")
+	rows, err := dao.DB.Query("SELECT id, name, url, category, curriculum FROM knowledge")
 	if err != nil {
 		log.Printf("fail: db.Query, %v\n", err)
 		w.WriteHeader(http.StatusInternalServerError)

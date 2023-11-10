@@ -69,7 +69,7 @@ func KnowlegdePostHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	_, err = tx.Exec("INSERT INTO user(id, name, url, category, curriculum) VALUES (?,?,?,?,?)", ulidId, requestBody.Name, requestBody.Url, requestBody.Category, requestBody.Curriculum)
+	_, err = tx.Exec("INSERT INTO knowledge(id, name, url, category, curriculum) VALUES (?,?,?,?,?)", ulidId, requestBody.Name, requestBody.Url, requestBody.Category, requestBody.Curriculum)
 	if err != nil {
 		tx.Rollback()
 		log.Printf("情報の登録に失敗しました , %v\n", err)

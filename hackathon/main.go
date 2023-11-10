@@ -14,6 +14,7 @@ import (
 func main() {
 	//  /Signupでリクエストされたら
 	http.HandleFunc("/Signup", user_controller.UserPostHandler)
+
 	http.HandleFunc("/Login", user_controller.UserGetHandler)
 	//  /knowledgeでリクエストされたら
 	http.HandleFunc("/knowledge", usecase.KnowledgeHandler)
