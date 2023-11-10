@@ -3,6 +3,7 @@ package main
 import (
 	"hackathon/dao"
 	"hackathon/usecase"
+	"hackathon/user_controller"
 	"log"
 	"net/http"
 	"os"
@@ -11,8 +12,9 @@ import (
 )
 
 func main() {
-	//  /userでリクエストされたら
-	http.HandleFunc("/user", usecase.UserHandler)
+	//  /Signupでリクエストされたら
+	http.HandleFunc("/Signup", user_controller.UserPostHandler)
+	http.HandleFunc("/Login", user_controller.UserGetHandler)
 	//  /knowledgeでリクエストされたら
 	http.HandleFunc("/knowledge", usecase.KnowledgeHandler)
 	// ③ Ctrl+CでHTTPサーバー停止時にDBをクローズする
