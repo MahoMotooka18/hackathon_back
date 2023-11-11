@@ -3,7 +3,6 @@ package main
 import (
 	"hackathon/dao"
 	"hackathon/usecase"
-	"hackathon/user_controller"
 	"log"
 	"net/http"
 	"os"
@@ -14,11 +13,6 @@ import (
 func main() {
 	// データベース接続の初期化
 	dao.Init()
-
-	//  /Signupでリクエストされたら
-	http.HandleFunc("/signup", user_controller.UserPostHandler)
-
-	http.HandleFunc("/login", user_controller.UserGetHandler)
 	//  /knowledgeでリクエストされたら
 	http.HandleFunc("/knowledge", usecase.KnowledgeHandler)
 	// ③ Ctrl+CでHTTPサーバー停止時にDBをクローズする
