@@ -12,6 +12,9 @@ import (
 )
 
 func main() {
+	// データベース接続の初期化
+	dao.Init()
+
 	//  /Signupでリクエストされたら
 	http.HandleFunc("/signup", user_controller.UserPostHandler)
 

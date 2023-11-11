@@ -4,7 +4,6 @@ import (
 	"database/sql"
 	"fmt"
 	_ "github.com/go-sql-driver/mysql"
-	"github.com/joho/godotenv"
 	_ "github.com/joho/godotenv"
 	"log"
 	"os"
@@ -13,12 +12,14 @@ import (
 var DB *sql.DB
 
 func Init() {
-	if err := godotenv.Load(".env_mysql"); err != nil {
-	}
 	mysqlUser := os.Getenv("MYSQL_USER")
 	mysqlPwd := os.Getenv("MYSQL_PASSWORD")
 	mysqlHost := os.Getenv("MYSQL_HOST")
 	mysqlDatabase := os.Getenv("MYSQL_DATABASE")
+	log.Printf("MYSQL_USER: %s", mysqlUser)
+	log.Printf("MYSQL_PASSWORD: %s", mysqlPwd)
+	log.Printf("MYSQL_HOST: %s", mysqlHost)
+	log.Printf("MYSQL_DATABASE: %s", mysqlDatabase)
 
 	connStr := fmt.Sprintf("%s:%s@%s/%s", mysqlUser, mysqlPwd, mysqlHost, mysqlDatabase)
 	_db, err := sql.Open("mysql", connStr)
