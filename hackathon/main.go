@@ -11,8 +11,6 @@ import (
 )
 
 func main() {
-	// データベース接続の初期化
-	dao.Init()
 	//  /knowledgeでリクエストされたら
 	http.HandleFunc("/knowledge", usecase.KnowledgeHandler)
 	// ③ Ctrl+CでHTTPサーバー停止時にDBをクローズする
