@@ -11,6 +11,7 @@ import (
 )
 
 func main() {
+	dao.Init()
 	//  /knowledgeでリクエストされたら
 	http.HandleFunc("/knowledge", knowledge_controller.KnowlegdeGetHandler)
 	http.HandleFunc("/knowledgepost", knowledge_controller.KnowlegdePostHandler)
@@ -32,6 +33,7 @@ func closeDBWithSysCall() {
 		log.Printf("received syscall, %v", s)
 		if err := dao.DB.Close(); err != nil {
 			log.Fatal(err)
+			//fmt.Println("cannot close sql")
 		}
 		log.Printf("success: db.Close()")
 		os.Exit(0)
