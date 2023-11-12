@@ -18,7 +18,7 @@ func KnowlegdeGetHandler(w http.ResponseWriter, r *http.Request) {
 	case http.MethodOptions:
 		w.WriteHeader(http.StatusOK)
 		return
-	case http.MethodPost:
+	case http.MethodGet:
 		rows, err := dao.DB.Query("SELECT id, name, url, category, curriculum FROM knowledge")
 		if err != nil {
 			log.Printf("fail: データを持ってくるのに失敗, %v\n", err)
