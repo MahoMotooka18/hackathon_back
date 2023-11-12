@@ -12,7 +12,7 @@ func KnowlegdeGetHandler(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Access-Control-Allow-Origin", "http://localhost:3000")
 	rows, err := dao.DB.Query("SELECT id, name, url, category, curriculum FROM knowledge")
 	if err != nil {
-		log.Printf("fail: db.Query, %v\n", err)
+		log.Printf("fail: データを持ってくるのに失敗, %v\n", err)
 		w.WriteHeader(http.StatusInternalServerError)
 		return
 	}

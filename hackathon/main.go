@@ -2,7 +2,7 @@ package main
 
 import (
 	"hackathon/dao"
-	"hackathon/usecase"
+	"hackathon/knowledge_controller"
 	"log"
 	"net/http"
 	"os"
@@ -12,7 +12,8 @@ import (
 
 func main() {
 	//  /knowledgeでリクエストされたら
-	http.HandleFunc("/knowledge", usecase.KnowledgeHandler)
+	http.HandleFunc("/knowledge", knowledge_controller.KnowlegdeGetHandler)
+	http.HandleFunc("/knowledgepost", knowledge_controller.KnowlegdePostHandler)
 	// ③ Ctrl+CでHTTPサーバー停止時にDBをクローズする
 	closeDBWithSysCall()
 	// 8050番ポートでリクエストを待ち受ける
