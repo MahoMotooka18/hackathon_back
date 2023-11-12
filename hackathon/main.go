@@ -11,7 +11,6 @@ import (
 )
 
 func main() {
-	dao.Init()
 	//  /knowledgeでリクエストされたら
 	http.HandleFunc("/knowledge", knowledge_controller.KnowlegdeGetHandler)
 	http.HandleFunc("/knowledgepost", knowledge_controller.KnowlegdePostHandler)
